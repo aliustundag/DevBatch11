@@ -1,0 +1,1 @@
+SELECT Id, CreatedDate, Priority__c, Status__c, Subject__c, Salesforce_Project__r.name, 	Salesforce_Project__r.project_name__c FROM Salesforce_Ticket__c
