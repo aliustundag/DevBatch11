@@ -36,7 +36,7 @@ trigger AccountTrigger on Account (before insert, after insert, before update, a
 */
     //===============================================================================================================
     
-
+/*
     if (trigger.isAfter) {
         List<Account> accTriggerNew = trigger.new;
 
@@ -45,10 +45,51 @@ trigger AccountTrigger on Account (before insert, after insert, before update, a
            id accId = newAcc.id;
            setIds.add(accId);    
         }
-        system.debug(setIds);
-
-        
+        system.debug(setIds);    
     }
+
+    =================================================================================================================
+
+*/
+
+    List<Account> accTriggerOld = trigger.old;
+    List<Account> accTriggerNew = trigger.new;
+    Map<Id,Account> accTriggerOldMap = trigger.oldMap;
+    Map<Id,Account> accTriggerNewMap = trigger.newMap;
+
+    if (trigger.isBefore && trigger.isInsert) {
+        system.debug('before insert old ==> '+ accTriggerOld);
+        system.debug('before insert new ==> '+ accTriggerNew);
+
+        system.debug('before insert old map ==> '+ accTriggerOldMap);
+        system.debug('before insert new map ==> '+ accTriggerNewMap);
+    }
+
+    if (trigger.isAfter && trigger.isInsert) {
+        system.debug('After insert old ==> '+ accTriggerOld);
+        system.debug('After insert new ==> '+ accTriggerNew);
+
+        system.debug('After insert old map ==> '+ accTriggerOldMap);
+        system.debug('After insert new map ==> '+ accTriggerNewMap);   
+    }
+
+    if (trigger.isBefore && trigger.isUpdate) {
+        system.debug('before update old ==> '+ accTriggerOld);
+        system.debug('before update new ==> '+ accTriggerNew);
+
+        system.debug('before update old map ==> '+ accTriggerOldMap);
+        system.debug('before update new map ==> '+ accTriggerNewMap);
+    }
+    if (trigger.isAfter && trigger.isUpdate) {
+        system.debug('After update old ==> '+ accTriggerOld);
+        system.debug('After update new ==> '+ accTriggerNew);
+
+        system.debug('After update old map ==> '+ accTriggerOldMap);
+        system.debug('After update new map ==> '+ accTriggerNewMap);
+    }
+
+
+
 
 
 }
